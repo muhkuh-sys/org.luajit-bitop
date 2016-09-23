@@ -1,0 +1,21 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:if="ant:if" name="org.luajit-bitop" default="install">
+	<target name="install" description="install all components">
+		<echo>org.luajit-bitop</echo>
+		
+		<sequential if:true="${install.os_arch.linux_i386}">
+			<copy file="linux_i386/lua_plugins/bit.so"      todir="${install.luaplugin}" />
+		</sequential>
+		
+		<sequential if:true="${install.os_arch.linux_x86_64}">
+			<copy file="linux_x86_64/lua_plugins/bit.so"    todir="${install.luaplugin}" />
+		</sequential>
+		
+		<sequential if:true="${install.os_arch.windows_x86}">
+			<copy file="windows_x86/lua_plugins/bit.dll"    todir="${install.luaplugin}" />
+		</sequential>
+		
+		<sequential if:true="${install.os_arch.windows_amd64}">
+			<copy file="windows_amd64/lua_plugins/bit.dll"  todir="${install.luaplugin}" />
+		</sequential>
+	</target>
+</project>

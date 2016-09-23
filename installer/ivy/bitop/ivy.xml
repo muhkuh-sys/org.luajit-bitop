@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="org.luajit"
+	      module="bitop"
+	      revision="${VERSION_FULL}"
+	      e:vcs-id="${PROJECT_VERSION_VCS}">
+		<license name="GPL-2.0"/>
+		<ivyauthor name="Muhkuh team" url="https://github.com/muhkuh-sys" />
+		<description>
+			bitop from http://bitop.luajit.org/ .
+		</description>
+	</info>
+	<publications>
+		<artifact ext="zip" type="zip" packaging="zip" />
+	</publications>
+	<dependencies>
+		<dependency org="org.muhkuh.lua" name="lua51" rev="5.1.5"/>
+	</dependencies>
+</ivy-module>
