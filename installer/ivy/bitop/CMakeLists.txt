@@ -13,7 +13,7 @@ CONFIGURE_FILE(ivy.xml ivy-${VERSION_FULL}.xml)
 #
 # Install the 32bit files.
 #
-INSTALL(FILES ${MUHKUH_WIN32_INSTALL}/lua_plugins/bitop.dll
+INSTALL(FILES ${MUHKUH_WIN32_INSTALL}/lib/bit.dll
         DESTINATION windows_x86/lua_plugins
 )
 
@@ -22,7 +22,7 @@ INSTALL(FILES ${MUHKUH_WIN32_INSTALL}/lua_plugins/bitop.dll
 #
 # Install the 64bit files.
 #
-INSTALL(FILES ${MUHKUH_WIN64_INSTALL}/lua_plugins/bitop.dll
+INSTALL(FILES ${MUHKUH_WIN64_INSTALL}/lib/bit.dll
         DESTINATION windows_amd64/lua_plugins
 )
 
