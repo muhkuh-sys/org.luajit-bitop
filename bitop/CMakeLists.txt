@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 2.8)
 
-PROJECT("bitop")
+PROJECT("org.luajit.bitop-bitop")
 
 INCLUDE(ExternalProject)
 
 
 SET(VERSION_EXTERNAL "1.0.2")
+SET(VERSION_PACKAGE  "1")
 
 #----------------------------------------------------------------------------
 #
@@ -33,6 +34,9 @@ ExternalProject_Add(TARGET_bitop
                     PATCH_COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/copy_over ${CMAKE_CURRENT_BINARY_DIR}/bitop-${VERSION_EXTERNAL}/src/TARGET_bitop
                     CMAKE_ARGS ${SUB_CMAKE_ARGS}
                     TEST_BEFORE_INSTALL 1
-                    TEST_COMMAND pwd && ${CMAKE_MAKE_PROGRAM} test
+                    TEST_COMMAND ${CMAKE_MAKE_PROGRAM} test
                     INSTALL_COMMAND ${CMAKE_MAKE_PROGRAM} install
 )
+
+# Write a version file.
+FILE(WRITE ${CMAKE_CURRENT_BINARY_DIR}/install/org.luajit.bitop-bitop.version "SET(org.luajit.bitop-bitop_VERSION ${VERSION_EXTERNAL}.${VERSION_PACKAGE})")

@@ -18,9 +18,6 @@ INCLUDE(cmake/muhkuh_installation_folders.cmake)
 # Python is used for some test scripts.
 FIND_PACKAGE(PythonInterp REQUIRED)
 
-# Include the location of the dependencies.
-INCLUDE(ivy/ant_paths.cmake OPTIONAL)
-
 # Select the LUA version.
 INCLUDE(cmake/muhkuh_lua.cmake)
 
