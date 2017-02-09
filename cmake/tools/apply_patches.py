@@ -38,7 +38,7 @@ def __copy_file(strSource, strDestination):
     fEof = False
     while fEof is False:
         strData = tFileSrc.read(sizChunk)
-        tFileDst.write(sizChunk)
+        tFileDst.write(strData)
         if len(strData) < sizChunk:
             fEof = True
 
@@ -54,7 +54,7 @@ def copy_files(strWorkingFolder, strCopyFolder):
         strWorkingSubFolder = os.path.join(strWorkingFolder, strCurrentRelPath)
 
         # Create the current subfolder in the working folder.
-        if os.path.exist(strWorkingSubFolder) != True:
+        if os.path.exists(strWorkingSubFolder) != True:
             print 'Create folder "%s".' % strWorkingSubFolder
             os.mkdir(strWorkingSubFolder)
 
@@ -62,7 +62,6 @@ def copy_files(strWorkingFolder, strCopyFolder):
         for strFilename in astrFilenames:
             strSourceFile = os.path.join(strDirname, strFilename)
             strDestinationFile = os.path.join(strWorkingSubFolder,
-                                              strCurrentRelPath,
                                               strFilename)
             print 'Copy file "%s" -> "%s".' % (strSourceFile,
                                                strDestinationFile)
