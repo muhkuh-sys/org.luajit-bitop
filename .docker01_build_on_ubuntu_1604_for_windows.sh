@@ -15,7 +15,7 @@ ID=`docker run --detach --interactive --volume ${PRJDIR}:/tmp/work mbs_ubuntu_16
 # Update the package list to prevent "not found" messages.
 docker exec ${ID} bash -c 'apt-get update --assume-yes'
 
-docker exec ${ID} bash -c 'apt-get install --assume-yes lua5.1 lua51-mhash lua-penlight lua-expat lua-logging lua-curl lua-zip lua-filesystem'
+docker exec ${ID} bash -c 'apt-get install --assume-yes lua5.1 lua51-mhash lua-expat lua-curl lua-zip lua-filesystem'
 #docker exec ${ID} bash -c 'git clone https://github.com/muhkuh-sys/org.muhkuh.lua-jonchki.git /tmp/jonchki'
 
 # Build the 32bit version.
