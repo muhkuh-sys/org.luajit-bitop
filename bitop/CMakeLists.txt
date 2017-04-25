@@ -11,8 +11,8 @@ SET(PROJECT_VERSION  "${VERSION_EXTERNAL}.${VERSION_PACKAGE}")
 INCLUDE(${CMAKE_HOME_DIRECTORY}/cmake/version.cmake)
 
 # Filter the jonchki configuration.
-CONFIGURE_FILE(installer/lua5.1/bitop.xml
-               ${CMAKE_CURRENT_BINARY_DIR}/lua5.1-bitop-${PROJECT_VERSION}.xml
+CONFIGURE_FILE(installer/lua${BUILDCFG_LUA_VERSION}/bitop.xml
+               ${CMAKE_CURRENT_BINARY_DIR}/lua${BUILDCFG_LUA_VERSION}-bitop-${PROJECT_VERSION}.xml
                @ONLY)
 
 OPTION(BUILDCFG_ONLY_JONCHKI_CFG "Build only the jonchki configuration. This is used for the resolve phase. The default is OFF."
