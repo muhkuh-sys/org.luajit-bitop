@@ -47,7 +47,7 @@ INSTALL(FILES ${INSTALL_UBUNTU_1610_X86}/lua_plugins/bit.so
 # Install the 64bit files.
 #
 INSTALL(FILES ${INSTALL_WIN64}/lua_plugins/bit.dll
-        DESTINATION windows_x64/lua_plugins)
+        DESTINATION windows_x86_64/lua_plugins)
 
 INSTALL(FILES ${INSTALL_UBUNTU_1404_X86_64}/lua_plugins/bit.so
         DESTINATION ubuntu_1404_x86_64/lua_plugins)
