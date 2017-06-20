@@ -13,7 +13,7 @@ PRJDIR=`pwd`
 mkdir -p ${PRJDIR}/build
 
 # Start the container and mount the project folder.
-lxc launch mbs-ubuntu-1604-x64 ${CONTAINER} -c security.privileged=true
+lxc launch mbs-ubuntu-1704-x64 ${CONTAINER} -c security.privileged=true
 lxc config device add ${CONTAINER} projectDir disk source=${PRJDIR} path=/tmp/work
 sleep 5
 
@@ -25,10 +25,10 @@ lxc exec ${CONTAINER} -- bash -c 'apt-get install --assume-yes lua5.1 lua-filesy
 
 # Build the 64bit version.
 lxc exec ${CONTAINER} -- bash -c 'cd /tmp/work && bash .build03_linux.sh'
-lxc exec ${CONTAINER} -- bash -c 'tar --create --file /tmp/work/build/build_ubuntu_1604_x86_64_lua5.1.tar.gz --gzip --directory /tmp/work/build/linux/lua5.1/bitop/install .'
-lxc exec ${CONTAINER} -- bash -c 'tar --create --file /tmp/work/build/build_ubuntu_1604_x86_64_lua5.2.tar.gz --gzip --directory /tmp/work/build/linux/lua5.2/bitop/install .'
-lxc exec ${CONTAINER} -- bash -c 'chown `stat -c %u:%g /tmp/work` /tmp/work/build/build_ubuntu_1604_x86_64_lua5.1.tar.gz'
-lxc exec ${CONTAINER} -- bash -c 'chown `stat -c %u:%g /tmp/work` /tmp/work/build/build_ubuntu_1604_x86_64_lua5.2.tar.gz'
+lxc exec ${CONTAINER} -- bash -c 'tar --create --file /tmp/work/build/build_ubuntu_1704_x86_64_lua5.1.tar.gz --gzip --directory /tmp/work/build/linux/lua5.1/bitop/install .'
+lxc exec ${CONTAINER} -- bash -c 'tar --create --file /tmp/work/build/build_ubuntu_1704_x86_64_lua5.2.tar.gz --gzip --directory /tmp/work/build/linux/lua5.2/bitop/install .'
+lxc exec ${CONTAINER} -- bash -c 'chown `stat -c %u:%g /tmp/work` /tmp/work/build/build_ubuntu_1704_x86_64_lua5.1.tar.gz'
+lxc exec ${CONTAINER} -- bash -c 'chown `stat -c %u:%g /tmp/work` /tmp/work/build/build_ubuntu_1704_x86_64_lua5.2.tar.gz'
 
 # Stop and remove the container.
 lxc stop ${CONTAINER}
