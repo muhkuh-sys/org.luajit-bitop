@@ -129,7 +129,7 @@ pipeline {
         }
         stage('Save Artifacts') {
             steps {
-                archive 'build/org.luajit-lua*-bitop/targets/jonchki/**/*.xml,build/org.luajit-lua*-bitop/targets/jonchki/**/*.tar.xz,build/org.luajit-lua*-bitop/targets/jonchki/**/*.hash'
+                archive 'build/*.xml,build/*.tar.xz,build/*.hash,build/*.pom'
             }
         }
     }
