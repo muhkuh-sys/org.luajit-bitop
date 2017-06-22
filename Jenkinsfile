@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean before build') {
+            steps {
+                sh 'rm -rf .[^.] .??* *'
+            }
+        }
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, recursiveSubmodules: true, reference: '', trackingSubmodules: false]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/muhkuh-sys/org.luajit-bitop.git']]])
@@ -130,6 +135,11 @@ pipeline {
         stage('Save Artifacts') {
             steps {
                 archive 'build/*.xml,build/*.tar.xz,build/*.hash,build/*.pom'
+            }
+        }
+        stage('Clean after build') {
+            steps {
+                sh 'rm -rf .[^.] .??* *'
             }
         }
     }
