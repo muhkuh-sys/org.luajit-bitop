@@ -15,11 +15,18 @@ mkdir -p ${BUILD_DIR}/lua5.2
 mkdir -p ${BUILD_DIR}/lua5.2/build_requirements
 
 
+# Install jonchki v0.0.1.1 .
+python2.7 jonchki/jonchkihere.py --jonchki-version 0.0.2.1 --local-archives ${PRJ_DIR}/jonchki/local_archives ${BUILD_DIR}
+
+# This is the path to the jonchki tool.
+JONCHKI=${BUILD_DIR}/jonchki-0.0.2.1/jonchki
+
+
 # Get the build requirements for the LUA5.1 version.
 pushd ${BUILD_DIR}/lua5.1/build_requirements
 cmake -DBUILDCFG_ONLY_JONCHKI_CFG="ON" -DBUILDCFG_LUA_VERSION="5.1" -DCMAKE_INSTALL_PREFIX="" ${CMAKE_COMPILER} ${PRJ_DIR}
 make
-lua5.1 ${JONCHKI} --verbose debug --syscfg ${PRJ_DIR}/jonchki/jonchkisys.cfg --prjcfg ${PRJ_DIR}/jonchki/jonchkicfg.xml ${JONCHKI_SYSTEM} --build-dependencies bitop/lua5.1-bitop-*.xml
+${JONCHKI} --verbose debug --syscfg ${PRJ_DIR}/jonchki/jonchkisys.cfg --prjcfg ${PRJ_DIR}/jonchki/jonchkicfg.xml ${JONCHKI_SYSTEM} --build-dependencies bitop/lua5.1-bitop-*.xml
 popd
 
 # Build the LUA5.1 version.
@@ -33,7 +40,7 @@ popd
 pushd ${BUILD_DIR}/lua5.2/build_requirements
 cmake -DBUILDCFG_ONLY_JONCHKI_CFG="ON" -DBUILDCFG_LUA_VERSION="5.2" -DCMAKE_INSTALL_PREFIX="" ${CMAKE_COMPILER} ${PRJ_DIR}
 make
-lua5.1 ${JONCHKI} --verbose debug --syscfg ${PRJ_DIR}/jonchki/jonchkisys.cfg --prjcfg ${PRJ_DIR}/jonchki/jonchkicfg.xml ${JONCHKI_SYSTEM} --build-dependencies bitop/lua5.2-bitop-*.xml
+${JONCHKI} --verbose debug --syscfg ${PRJ_DIR}/jonchki/jonchkisys.cfg --prjcfg ${PRJ_DIR}/jonchki/jonchkicfg.xml ${JONCHKI_SYSTEM} --build-dependencies bitop/lua5.2-bitop-*.xml
 popd
 
 # Build the LUA5.2 version.
