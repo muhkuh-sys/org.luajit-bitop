@@ -23,12 +23,6 @@ lxc exec ${CONTAINER} -- bash -c 'rm -rf /tmp/build'
 lxc exec ${CONTAINER} -- bash -c 'mkdir /tmp/build'
 lxc exec ${CONTAINER} -- bash -c 'mount --bind /tmp/build /tmp/work/build'
 
-# Update the package list to prevent "not found" messages.
-lxc exec ${CONTAINER} -- bash -c 'apt-get update --assume-yes'
-
-# Install the project specific packages.
-lxc exec ${CONTAINER} -- bash -c 'apt-get install --assume-yes lua5.1 lua-filesystem lua-expat lua-sql-sqlite3 lua51-mhash lua-sql-sqlite3'
-
 # Build the 32bit version.
 lxc exec ${CONTAINER} -- bash -c 'export PATH=/usr/mingw-w64-i686/bin:${PATH} && cd /tmp/work && bash .build01_windows32.sh'
 lxc exec ${CONTAINER} -- bash -c 'tar --create --file /tmp/work/build/build_windows_x86_lua5.1.tar.gz --gzip --directory /tmp/work/build/windows32/lua5.1/bitop/install .'
