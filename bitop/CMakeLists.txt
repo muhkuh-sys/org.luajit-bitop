@@ -4,7 +4,7 @@ INCLUDE(ExternalProject)
 
 
 SET(VERSION_EXTERNAL "1.0.2")
-SET(VERSION_PACKAGE  "2")
+SET(VERSION_PACKAGE  "3")
 SET(PROJECT_VERSION  "${VERSION_EXTERNAL}.${VERSION_PACKAGE}")
 
 # Get the VCS version for the jonchki configuration.
