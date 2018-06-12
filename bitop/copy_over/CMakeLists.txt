@@ -12,7 +12,7 @@ TARGET_INCLUDE_DIRECTORIES(TARGET_bit
                            PRIVATE ${LUA_INCLUDE_DIR})
 TARGET_LINK_LIBRARIES(TARGET_bit ${LUA_LIBRARIES})
 
-# Set the name of the output file to "lfs".
+# Set the name of the output file to "bit".
 SET_TARGET_PROPERTIES(TARGET_bit PROPERTIES PREFIX "" OUTPUT_NAME "bit")
 
 # On mingw link all compiler libraries static.
