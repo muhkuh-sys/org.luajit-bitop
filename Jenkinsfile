@@ -8,7 +8,21 @@ node {
     atBuilds.each { atEntry ->
         stage(atEntry[0]){
             docker.image("${atEntry[2]}").inside('-u root') {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, recursiveSubmodules: true, reference: '', trackingSubmodules: false]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/muhkuh-sys/org.luajit-bitop.git']]])
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/master']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [
+                        [$class: 'SubmoduleOption',
+                            disableSubmodules: false,
+                            recursiveSubmodules: true,
+                            reference: '',
+                            trackingSubmodules: false
+                        ],
+                        [$class: 'WipeWorkspace']
+                    ],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[url: 'https://github.com/muhkuh-sys/org.luajit-bitop.git']]
+                ])
 
                 /* Build the project. */
                 sh "bash .build ${atEntry[1]}"
