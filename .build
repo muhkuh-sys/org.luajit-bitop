@@ -34,6 +34,12 @@ elif [ "$TARGET" == "windows64" ]; then
 	JONCHKI_SYSTEM="--distribution-id windows --empty-distribution-version --cpu-architecture x86_64"
 	TOOLS_PATH=/usr/mingw-w64-x86_64/bin:${PATH}
 
+elif [ "$TARGET" == "raspbian" ]; then
+	CMAKE_COMPILER="-DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc -DCMAKE_CXX_COMPILER=arm-linux-gnueabihf-g++"
+	CMAKE_PLATFORM="-DJONCHKI_PLATFORM_DIST_ID=raspbian -DJONCHKI_PLATFORM_DIST_VERSION=9.0 -DJONCHKI_PLATFORM_CPU_ARCH=armhf"
+	JONCHKI_SYSTEM="--distribution-id raspbian --distribution-version 9.0 --cpu-architecture armhf"
+	TOOLS_PATH=${PATH}
+
 else
 	echo "Unknown build target: ${TARGET}"
 	exit -1
