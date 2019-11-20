@@ -13,5 +13,5 @@ set(CMAKE_RC_COMPILER ${tools}/i686-w64-mingw32-windres)
 # Source: https://stackoverflow.com/questions/11423313/cmake-cross-compiling-c-flags-from-toolchain-file-ignored
 UNSET(CMAKE_C_FLAGS CACHE)
 UNSET(CMAKE_CXX_FLAGS CACHE)
-set(CMAKE_C_FLAGS "-m32" CACHE STRING "" FORCE)
-set(CMAKE_CXX_FLAGS "-m32" CACHE STRING "" FORCE)
+set(CMAKE_C_FLAGS "-m32 -static-libgcc -static-libstdc++" CACHE STRING "" FORCE)
+set(CMAKE_CXX_FLAGS "-m32 -static-libgcc -static-libstdc++" CACHE STRING "" FORCE)
