@@ -27,5 +27,17 @@ end
 function bit.rshift(a, b)
   return a >> b
 end
+function bit.bswap(a)
+  return ((a & 0x000000ff) << 24) | ((a & 0x0000ff00) << 8) | ((a & 0x00ff0000) >> 8) | ((a & 0xff000000) >> 24)
+end
+function bit.tohex(a, n)
+  n = n or 8
+  local cHex = 'x'
+  if n<0 then
+    cHex = 'X'
+    n = -n
+  end
+  return string.format(string.format('%%0%d%c', n, cHex), a)
+end
 
 return bit
