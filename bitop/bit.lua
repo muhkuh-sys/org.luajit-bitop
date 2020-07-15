@@ -39,5 +39,8 @@ function bit.tohex(a, n)
   end
   return string.format(string.format('%%0%d%c', n, cHex), a)
 end
+function bit.tobit(a)
+  return a
+end
 
 return bit
