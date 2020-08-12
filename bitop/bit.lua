@@ -37,7 +37,7 @@ function bit.tohex(a, n)
     cHex = 'X'
     n = -n
   end
-  return string.format(string.format('%%0%d%c', n, cHex), a)
+  return string.format(string.format('%%0%d%s', n, cHex), a)
 end
 function bit.tobit(a)
   return a
